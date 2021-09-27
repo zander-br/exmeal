@@ -5,9 +5,10 @@ defmodule Exmeal.Meals.UpdateTest do
     test "when a valid id is given, returns the meal" do
       params = %{
         calories: 20,
-        date: ~D[2001-05-02],
+        date: ~N[2001-05-02 08:10:20],
         description: "Banana"
       }
+
       {_ok, meal} = Exmeal.create_meal(params)
 
       response = Exmeal.update_meal(%{"id" => meal.id, "calories" => 25})
@@ -15,7 +16,7 @@ defmodule Exmeal.Meals.UpdateTest do
       assert {:ok,
               %Exmeal.Meal{
                 calories: 25,
-                date: ~D[2001-05-02],
+                date: ~N[2001-05-02 08:10:20],
                 description: "Banana",
                 id: _id
               }} = response

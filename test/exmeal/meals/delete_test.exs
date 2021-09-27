@@ -5,7 +5,7 @@ defmodule Exmeal.Meals.DeleteTest do
     test "when a valid id is given, returns the meal" do
       params = %{
         calories: 20,
-        date: ~D[2001-05-02],
+        date: ~N[2001-05-02 08:10:20],
         description: "Banana"
       }
 
@@ -16,7 +16,7 @@ defmodule Exmeal.Meals.DeleteTest do
       assert {:ok,
               %Exmeal.Meal{
                 calories: 20,
-                date: ~D[2001-05-02],
+                date: ~N[2001-05-02 08:10:20],
                 description: "Banana",
                 id: _id
               }} = response
