@@ -1,17 +1,23 @@
 defmodule Exmeal.Meal do
   use Ecto.Schema
+
   import Ecto.Changeset
 
+  alias Exmeal.User
+
   @primary_key {:id, :binary_id, autogenerate: true}
+  @foreign_key_type :binary_id
 
-  @params [:description, :date, :calories]
+  @params [:description, :date, :calories, :user_id]
 
-  @derive {Jason.Encoder, only: [:calories, :date, :description, :id]}
+  @derive {Jason.Encoder, only: [:calories, :date, :description, :id, :user_id]}
 
   schema "meals" do
     field :description, :string
     field :date, :naive_datetime
     field :calories, :integer
+
+    belongs_to :user, User
 
     timestamps()
   end
